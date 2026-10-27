@@ -33,3 +33,15 @@ The sound exhibit contains four 20-second FLAC excerpts starting at 30 seconds
 in the game-timed intro renders. No per-card normalization is applied. There
 are no asset download links or export controls. Do not copy installation files,
 ROMs, complete audio collections or raw resource archives into the site.
+
+For interactive checks, install Python Playwright and use system Chromium:
+
+```sh
+python3 scripts/check-browser.py --base http://127.0.0.1:4175/tfx-traced/
+```
+
+Set `SITE_PREFIX=/tfx-traced` when starting the preview for that example, or
+pass the actual preview base URL. The check exercises animation, damage
+switches, palettes, mission briefings, map lights, all four FLAC excerpts,
+mobile layout and the absence of download controls. It also runs against the
+published site. It is separate from the lightweight build/link checks in CI.
