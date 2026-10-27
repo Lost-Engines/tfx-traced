@@ -1,0 +1,50 @@
+
+
+<h1>Aircraft, scenery and small surprises</h1>
+<p>Turn the aircraft around, lower the undercarriage or unfold an ejecting pilot’s parachute. Search by name, or choose a family below. Drag to rotate, Shift-drag to pan and scroll to zoom. The small previews follow your viewing angle.</p>
+<div class="controls">
+<input aria-label="Search models" id="search" placeholder="Search names, identifiers or uses" type="search"/>
+<label>Use <select aria-label="Model use" id="group"></select></label><label>Names <select aria-label="Model naming" id="naming"><option value="all">All</option><option value="named">Named</option><option value="unknown">Unidentified / ambiguous</option></select></label>
+<select aria-label="Selected model" id="model"></select>
+<select aria-label="Palette" id="palette"></select>
+</div>
+<div class="controls">
+<label>Detail <select id="lod"></select></label>
+<label><input checked="" id="rules" title="Apply authored facing branches and reject back-facing polygons" type="checkbox"/>Facing rules</label>
+<label><input checked="" id="shading" type="checkbox"/>Gouraud shading</label>
+<label><input id="edges" type="checkbox"/>Edges</label>
+<label><input id="neutral" type="checkbox"/>Neutral colours</label>
+<label><input id="spin" type="checkbox"/>Rotate</label>
+<label><input checked="" id="jitter" type="checkbox"/>Animate effects</label>
+<button id="reset" type="button">Reset view</button>
+</div>
+<canvas aria-label="Interactive model preview" height="650" id="main" width="1200"></canvas>
+<div id="summary"></div><div class="controls" id="usage-tags"></div><details id="assembly-panel"><summary id="assembly-summary">Assembled scenery &amp; actors</summary><div class="assembly-links" id="assembly-links"></div><p class="muted" hidden="" id="assembly-empty">No decoded assembly references found.</p></details><details><summary>Known uses &amp; classification evidence</summary><p>Categories can overlap. Native entity, weapon and terrain references are distinguished from identified model families and naming conventions. A retained model may have a known role without being selected in the current missions.</p><div id="usage-evidence"></div></details>
+<details hidden="" id="store-panel"><summary>Carried stores · supplied inspection loadout</summary><p>Choose models for the ten original attachment slots. Empty is deliberate: the standalone shape has no live actor loadout. These selections inspect geometry; they do not enforce the game's permitted weapon combinations.</p><div class="toolbar" id="stores"></div></details>
+<div id="parameter-panel">
+<div class="controls"><label>State <select id="parameter"></select></label>
+<label hidden="" id="parameter-toggle-control"><input id="parameter-toggle" type="checkbox"/><span id="parameter-toggle-text">Alternate state</span></label>
+<input aria-label="Animation state" id="parameter-slider" max="255" min="0" style="width:190px" type="range" value="0"/>
+<input aria-label="Animation state value" id="parameter-value" max="255" min="0" style="width:65px" type="number" value="0"/>
+<span class="muted" id="parameter-range"></span>
+<button id="parameter-play" type="button">Play states</button>
+<button hidden="" id="parameter-reverse" type="button">Reverse</button>
+<label id="parameter-loop-control"><input id="parameter-loop" type="checkbox"/><span id="parameter-loop-text">Loop</span></label>
+<label id="parameter-speed-control">Steps/s <input id="parameter-speed" max="30" min="1" style="width:55px" type="number" value="4"/></label>
+<button id="parameter-fit" type="button">Fit state range</button></div>
+<div class="muted" id="parameter-info"></div>
+</div>
+
+<div id="swatches"></div>
+<div id="status" role="status"></div>
+<div id="notes"></div>
+<details><summary>Model parameters and source details</summary>
+<p>Animation controls come from the model programs. Two-state changes use a switch; reversible mechanisms can play in either direction. Four steps per second is a convenient preview speed, not a claim about the original game’s timing.</p>
+<div class="controls"><label>Distance <input id="distance" max="32767" min="0" style="width:95px" type="number" value="0"/></label></div>
+<div class="muted" hidden="" id="source"></div>
+</details>
+<div class="controls divider" id="pagination"><span id="count"></span><label><input checked="" id="paging" type="checkbox"/>Paging</label><div id="page-controls"><button id="previous" type="button">Previous</button> <span id="page"></span> <button id="next" type="button">Next</button></div></div>
+<div class="gallery" id="gallery"></div>
+<script src="../viewer/models/data.js"></script>
+<script src="../viewer/models/usage.js"></script><script src="../viewer/models/model.js"></script><script src="../viewer/models/effects.js"></script><script src="../viewer/models/raster.js"></script>
+<script src="../viewer/models/../media/data.js"></script><script src="../viewer/models/../textures/textures.js"></script><script src="../viewer/models/viewer.js"></script>

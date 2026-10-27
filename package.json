@@ -1,0 +1,15 @@
+{
+  "name": "tfx-traced",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "An illustrated investigation and interactive atlas of Digital Image Design's TFX",
+  "engines": {"node": ">=22"},
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "node scripts/check.mjs",
+    "dev": "node scripts/build.mjs && node scripts/serve.mjs",
+    "preview": "node scripts/serve.mjs"
+  },
+  "dependencies": {"marked": "18.1.0", "parse5": "8.0.0"}
+}
