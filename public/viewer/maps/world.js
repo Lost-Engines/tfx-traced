@@ -13,6 +13,29 @@ function geometry(name,status=0){const key=`${name}:${status}`;if(cache.has(key)
 // The original environment parser sets the shape status bit tested by city
 // and runway programs. Twilight configurations also explicitly request night.
 function environmentStatus(environment){return (environment.config||'').split(/\s+/).includes('night')?nightStatus:0;}
+// The mission's world selects geometry; type selects a separate lighting
+// configuration. Weather-named grids are retained data, not retail maps.
+const regions=[
+ {name:'yugoslav',label:'Yugoslavia',prefix:'yugos',day:'yugos_d'},
+ {name:'columbia',label:'Colombia',prefix:'colum',day:'colum_d'},
+ {name:'somalia',label:'Somalia',prefix:'somal',day:'somal_d'},
+ {name:'libya',label:'Libya',prefix:'libya',day:'libya_d'},
+ {name:'seaworld',label:'Atlantic',prefix:'sea',day:'seaclear'}
+];
+const environmentNamed=name=>TFX_WORLD.environments.find(e=>e.name===name);
+function regionFor(name){return regions.find(r=>name?.startsWith(r.prefix)||(name==='y_winter'&&r.name==='yugoslav'));}
+function isRegional(environment){return regions.some(r=>r.name===environment?.name);}
+function missionGrid(mission){return environmentNamed(mission?.world?.toLowerCase().slice(0,8));}
+function lightingChoices(environment){const region=regionFor(environment?.name);return TFX_WORLD.environments.filter(e=>region&&regionFor(e.name)===region&&/\b(day|night)\b/.test(e.config));}
+function gridNote(environment){
+ if(environment.name==='clouds')return 'Cloud-layer geometry, shown here in isolation from its runtime altitude and regional ground map.';
+ return isRegional(environment)?'':'Archived terrain: this grid is not used for retail mission terrain. Obsolete scenery may appear here.';
+}
+function mapDescription(environment,lighting){
+ const note=gridNote(environment);
+ const undefinedCount=Object.keys(environment.undefined_tile_indices).length;
+ return `${environment.name}: ${environment.width} × ${environment.height} cells, ${environment.tiles.length} authored tiles. Lighting: ${lighting?.name||'none'}.${note?' '+note:''}${undefinedCount?' Undefined stored tile references are shown magenta.':''}`;
+}
 function parts(name){const definition=objects.get(name);if(!definition)return[{name,offset:[0,0,0]}];const draws=definition.draw_parts.length?definition.draw_parts:definition.parts.filter(p=>p.slot===0).map(p=>({slot:p.slot}));return draws.map(draw=>{const p=definition.parts.find(p=>p.slot===draw.slot);return p?{...p,offset:definition.anchors[draw.anchor]||[0,0,0]}:null;}).filter(Boolean);}
 // SSD draw calls enqueue complete shapes. Native 0xcc226 adds the model's
 // signed header bias to camera depth; the queue then paints far to near.
@@ -85,5 +108,5 @@ function assemble(environment,x,z,radius=0,{status=environmentStatus(environment
  }
  return{faces,lines,points,collisions,warnings:[...warnings],cells};
 }
-root.TFXScenery={assemble,parts,drawOrder,geometry,environmentStatus,nightStatus,variant,rotateTile,models,objects};
+root.TFXScenery={regions,environmentNamed,regionFor,isRegional,missionGrid,lightingChoices,gridNote,mapDescription,assemble,parts,drawOrder,geometry,environmentStatus,nightStatus,variant,rotateTile,models,objects};
 })(globalThis);

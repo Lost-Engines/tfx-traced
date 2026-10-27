@@ -5,11 +5,12 @@
     "models/model.js": "0278dbdb6d95139d46893fb46118165e046ba263f5658b49450c96dd6ac403ba",
     "models/raster.js": "2219cc1f0148c6a30bbdd1f811a1041ca8c15c86fe35c8a018bccc6c9061a3e6",
     "models/effects.js": "7b8ef70ad9d0e306105baa54ef51da93a0eb5f6df1128cfa4d6d1ce4606bfbd5",
-    "maps/map.js": "5ac5bb6384d166bb855873ed97d4189a2a55e351cace990f1f5182517c217b93",
+    "maps/map.js": "f4a803d0577d4ec35fb19b4e0cfefc003854e6065b681ebf0db4cef97cd0e390",
     "maps/triangulate.js": "e0c5af0157d331190e3afa7c8195d2f0c708937f19913e285dc1f51069a76f6f",
-    "maps/world.js": "eefea287ecfabb7e6e064e31efa1516765529f7779de2958b052afacd42c9003",
+    "maps/world.js": "8341c8cc993579cfc62aa9a7c83f4815ea31ffdcd00e855bec0093935f02098b",
     "textures/textures.js": "604d24d794d5785a8b693ab01c7d34a97728d654cf844a9a0281d658fa7cfdf6",
     "missions/style.css": "f53cb3388010f860a84b9d506338399d41df9a108558f9c5c9960dc7aad3fb5c",
+    "../tools/check_map_selection.js": "907d121b353f17a6f23a7674e9f909754ca94ba28899fc846210886d7b420987",
     "models/data.js": "5383d0d089ac2cb188e3e7f42039d9ed707ebb9852a30f8f2af9db0e1ee8895a",
     "maps/data.js": "abecf2ea30b9f289649ab03e98a52b2776122e6e9c8f07ba18ced9eccbe33eed",
     "models/usage.js": "1d7332dd5fc0408ed17117b50d374bf7cc7cb2f5458f7358633697ca7eda6265",
@@ -17,7 +18,7 @@
     "missions/data.js": "16be45a5e3646031d3a65ddfbeab29865e5b9592106d15cd5c37bdd39ace8f4d",
     "waypoints/data.js": "370f4663ba15ecad3c685eac4628b548fb3bd298696d2e6848b79e09133ea5c0",
     "models/viewer.js": "243b81c7ef5c9c2e630a8b99ab9f1ffcd03bd8a6858751eb6b85ec36fd2078de",
-    "maps/viewer.js": "3af1fa9b84d2042b6e136bb860f5464545b1a6fade9b91c96050d6082833f2f5",
+    "maps/viewer.js": "6a487e0908319f2b1bf3ad9eab68fa4c411274238a1f376a973a5e2f149663b0",
     "missions/missions.js": "6cd206d39dc14621943d6bd9ac3c8e3f8dc95488e636fa2ab272abafc0914ff7"
   },
   "scope": {

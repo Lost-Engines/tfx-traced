@@ -10,7 +10,7 @@ function paletteName(environment) {
   return TFX_DATA.palettes[region]?region:Object.keys(TFX_DATA.palettes)[0];
 }
 function schematic(environment) {
-  const name=environment.config.trim().split(/\s+/).at(-1);
+  const name=environment?.config.trim().split(/\s+/).at(-1);
   if(!name)return null;
   const sprite=TFX_MEDIA.entries.find(e=>e.family==='sprites'&&(e.name===name||e.names.includes(`spr/${name}.spr`)));
   const frame=sprite?.frames[0];
@@ -36,10 +36,10 @@ function terrainColour(environment,colours,index,x,z,mode) {
   }
   return(colours[terrainColours.get(name)]||[15,22,30]).map(v=>Math.round(v*255/63));
 }
-function drawBackground(ctx,environment,colours,mode='terrain') {
+function drawBackground(ctx,environment,colours,mode='terrain',lighting=environment) {
   let cached=backgrounds.get(environment);
-  if(!cached||cached.colours!==colours||cached.mode!==mode) {
-    const {width,height}=environment,frame=mode==='schematic'?schematic(environment):null;
+  if(!cached||cached.colours!==colours||cached.mode!==mode||cached.lighting!==lighting) {
+    const {width,height}=environment,frame=mode==='schematic'?schematic(lighting):null;
     const bytes=frame?atob(frame.pixels):null,pixels=new Uint8ClampedArray(width*height*4);
     for(let i=0;i<width*height;i++) {
       const x=i%width,z=Math.floor(i/width);
@@ -49,7 +49,7 @@ function drawBackground(ctx,environment,colours,mode='terrain') {
     }
     const canvas=document.createElement('canvas');canvas.width=width;canvas.height=height;
     canvas.getContext('2d').putImageData(new ImageData(pixels,width,height),0,0);
-    cached={canvas,colours,mode,actualMode:mode==='schematic'&&!frame?'terrain':mode};
+    cached={canvas,colours,mode,lighting,actualMode:mode==='schematic'&&!frame?'terrain':mode};
     backgrounds.set(environment,cached);
   }
   ctx.imageSmoothingEnabled=false;

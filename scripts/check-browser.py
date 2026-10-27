@@ -45,9 +45,30 @@ with sync_playwright() as p:
  boundary(page)
  page.close()
  page=open_page('maps/#yugos_n/136/114')
+ assert page.locator('#environment').input_value()=='yugoslav'
+ assert page.locator('#lighting').input_value()=='yugos_n'
  assert page.locator('#night-lights').is_checked()
  assert page.evaluate('totalPoints')>1000
  assert page.evaluate('gl.getError()')==0
+ # Old weather-named URLs migrate to regional terrain; archived data is opt-in.
+ page.goto(base+'maps/#yugos_n/137/113',wait_until='load')
+ assert 'tile 59' in page.locator('#cell-title').inner_text()
+ assert page.evaluate('mesh.faces.filter(f=>f.cell?.[0]===137&&f.cell[1]===113).every(f=>f.vertices.every(v=>v[1]===0))')
+ page.locator('#environment').select_option('yugos_n')
+ assert 'tile 105' in page.locator('#cell-title').inner_text()
+ assert 'Archived terrain' in page.locator('#grid-note').inner_text()
+ assert 'retained=1' in page.url
+ page.reload(wait_until='load')
+ assert page.locator('#environment').input_value()=='yugos_n'
+ page.locator('#environment').select_option('yugoslav')
+ page.locator('#lighting').select_option('yugos_n')
+ page.locator('#map-mode').select_option('schematic')
+ assert page.evaluate('TFXMap.schematic(lighting).width')==200
+ assert 'retained=1' not in page.url
+ page.locator('#lighting').select_option('yugos_d')
+ assert page.evaluate('totalPoints')==0
+ assert 'tile 59' in page.locator('#cell-title').inner_text()
+ page.locator('#lighting').select_option('yugos_n')
  page.locator('#night-lights').uncheck();assert page.evaluate('totalPoints')==0
  page.locator('#night-lights').check()
  page.locator('#radius').fill('5');page.locator('#radius').dispatch_event('change')
@@ -57,6 +78,7 @@ with sync_playwright() as p:
  assert page.locator('#mission option').count()==11
  page.locator('#mission').select_option('904ccca3')
  assert 'Hop 1 of 10' in page.locator('#mission-info').inner_text()
+ assert page.evaluate('environment.name===mission.world.slice(0,8)&&lighting.name===mission.environment')
  page.locator('#mission-group').select_option('all')
  page.locator('#mission').select_option('9a6eb4a1')
  page.locator('#mission-info summary').filter(has_text='Full briefing').click()

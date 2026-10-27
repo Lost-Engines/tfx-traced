@@ -46,7 +46,7 @@ The five theatres are built from 200 × 200 grids. A cell identifies a terrain d
 
 That distinction matters. A runway is not necessarily one runway model, and an oil rig's smoke does not have to be baked into its main shape. Missing an anchor piles the parts at the origin. Applying the standalone model viewer's convenient scale to a whole scene can make a runway enormous. Both mistakes looked superficially plausible until we compared the assemblies with the native drawing calls.
 
-The [map explorer](../maps/) shows recovered terrain and scenery, with mission starts, targets, briefings and routes. Environments include changes in weather and lighting; 39 environment records do not mean 39 unrelated theatres. Some retained configurations have unresolved tile references, which remain visible rather than being silently replaced.
+The [map explorer](../maps/) shows recovered terrain and scenery, with mission starts, targets, briefings and routes. Terrain and lighting are separate choices: a night mission uses the same regional ground map with a different lighting configuration. We initially mistook weather-named archived grids for the playable maps, which put floating mountain slopes where motorway tiles should have been. The explorer now follows the game’s selection; those older grids remain available, labelled as archived inspection data.
 
 <figure><img src="../images/city.png" alt="Warm amber points marking the roads through reconstructed Yugoslavian city scenery" loading="lazy"><figcaption>Night streets are drawn with carefully placed palette-coloured points. They do not cast light onto the surrounding buildings.</figcaption></figure>
 

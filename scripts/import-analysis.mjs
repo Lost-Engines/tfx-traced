@@ -14,6 +14,7 @@ async function data(file,name,adapt=value=>value){const context=vm.createContext
 function replace(text,from,to){if(!text.includes(from))throw Error('Source adapter no longer matches: '+String(from).slice(0,90));return text.replace(from,to);}
 function section(text,first,last,body){const start=text.indexOf(first),end=text.indexOf(last,start);if(start<0||end<0)throw Error('Missing adapter boundary: '+first);return text.slice(0,start)+body+text.slice(end);}
 for(const file of ['models/model.js','models/raster.js','models/effects.js','maps/map.js','maps/triangulate.js','maps/world.js','textures/textures.js','missions/style.css'])await write(file,await read(file));
+await fs.writeFile(path.join(root,'scripts/check-map-selection.cjs'),await read('../tools/check_map_selection.js'));
 const models=await data('models/data.js','TFX_DATA');
 const world=await data('maps/data.js','TFX_WORLD');
 await data('models/usage.js','TFX_MODEL_USAGE',usage=>{for(const m of Object.values(usage.models))for(const e of m.evidence||[])delete e.link;return usage;});
@@ -37,7 +38,7 @@ let map=await read('maps/viewer.js');
 map=map.replace('sceneRadius=1,exportURL,','sceneRadius=1,');
 map=replace(map,"if(exportURL)URL.revokeObjectURL(exportURL);exportURL=null;el('obj').href='#';render();}","render();}");
 map=section(map,'function exportScene(){','function render(){','');
-map=section(map,'function settings(){','function selectMission(focus)',`function settings(){el('map-status').textContent=\`\${environment.name}: 200 × 200 cells, \${environment.tiles.length} authored tiles.\`;}
+map=section(map,'function settings(){','function selectMission(focus)',`function settings(){el('map-status').textContent=TFXScenery.mapDescription(environment,lighting);el('grid-note').textContent=TFXScenery.gridNote(environment);}
 `);
 map=section(map,"let link=el('compiled-link');","el('route-list').replaceChildren",'');
 map=map.replace("el('obj').onclick=exportScene;",'').replace('; more preview notes in model-format.md','; see the research archive for full notes');
