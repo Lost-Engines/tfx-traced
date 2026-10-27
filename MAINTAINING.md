@@ -43,5 +43,6 @@ python3 scripts/check-browser.py --base http://127.0.0.1:4175/tfx-traced/
 Set `SITE_PREFIX=/tfx-traced` when starting the preview for that example, or
 pass the actual preview base URL. The check exercises animation, damage
 switches, palettes, mission briefings, map lights, all four FLAC excerpts,
-mobile layout and the absence of download controls. It also runs against the
+mobile layout and the absence of download controls. GPU readback checks also
+cover coplanar map overlays, distant surface separation and light occlusion. It also runs against the
 published site. It is separate from the lightweight build/link checks in CI.

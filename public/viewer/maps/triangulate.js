@@ -66,5 +66,16 @@ function triangulate(vertices){
  if(indices.length===3)triangles.push(indices.map(i=>vertices[i]));
  return triangles;
 }
-root.TFXPolygon={triangulate};
+// A shared plane equation gives coplanar faces exactly the same fragment
+// depth, independent of triangulation or winding. Normalise by the largest
+// component and discard arithmetic noise far below the native vertex spacing.
+function plane([a,b,c]){
+ const u=b.slice(0,3).map((v,i)=>v-a[i]),v=c.slice(0,3).map((v,i)=>v-a[i]);
+ const normal=[u[1]*v[2]-u[2]*v[1],u[2]*v[0]-u[0]*v[2],u[0]*v[1]-u[1]*v[0]];
+ const major=normal.map(Math.abs).indexOf(Math.max(...normal.map(Math.abs))),scale=normal[major];
+ if(!scale)return[0,0,0,0];
+ const n=normal.map(v=>v/scale),offset=-n.reduce((sum,v,i)=>sum+v*a[i],0);
+ return [...n,offset].map(v=>Math.round(v*1e9)/1e9);
+}
+root.TFXPolygon={triangulate,plane};
 })(globalThis);

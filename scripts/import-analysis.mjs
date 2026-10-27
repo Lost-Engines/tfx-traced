@@ -15,6 +15,7 @@ function replace(text,from,to){if(!text.includes(from))throw Error('Source adapt
 function section(text,first,last,body){const start=text.indexOf(first),end=text.indexOf(last,start);if(start<0||end<0)throw Error('Missing adapter boundary: '+first);return text.slice(0,start)+body+text.slice(end);}
 for(const file of ['models/model.js','models/raster.js','models/effects.js','maps/map.js','maps/triangulate.js','maps/world.js','textures/textures.js','missions/style.css'])await write(file,await read(file));
 await fs.writeFile(path.join(root,'scripts/check-map-selection.cjs'),await read('../tools/check_map_selection.js'));
+await fs.writeFile(path.join(root,'scripts/check_map_depth.py'),await read('../tools/check_map_depth.py'));
 const models=await data('models/data.js','TFX_DATA');
 const world=await data('maps/data.js','TFX_WORLD');
 await data('models/usage.js','TFX_MODEL_USAGE',usage=>{for(const m of Object.values(usage.models))for(const e of m.evidence||[])delete e.link;return usage;});

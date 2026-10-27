@@ -6,6 +6,7 @@ Requires Python Playwright and system Chromium. No research tree or game install
 import argparse
 from pathlib import Path
 from playwright.sync_api import sync_playwright
+from check_map_depth import check_depth
 p=argparse.ArgumentParser(description=__doc__)
 p.add_argument('--base',default='http://127.0.0.1:4185/tfx-traced/')
 p.add_argument('--screenshots',type=Path)
@@ -85,6 +86,8 @@ with sync_playwright() as p:
  page.locator('#mission-info select').select_option('french')
  assert len(page.locator('#mission-info pre').first.inner_text())>40
  boundary(page)
+ page.goto(base+'maps/?lighting=yugos_n#yugoslav/136/114',wait_until='load')
+ check_depth(page)
  page.close()
  page=open_page('sound/')
  players=page.locator('audio');assert players.count()==4
