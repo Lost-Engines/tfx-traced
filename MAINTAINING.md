@@ -19,7 +19,12 @@ GitHub Actions. No release archives are created.
 
 Edit `content/investigation.md` for the article, `src/` for presentation and
 `public/` for the committed exhibit snapshot. `content/research-sources.md`
-connects public claims to evidence. Keep team language and preserve caveats.
+connects public claims to evidence. Write as a team describing the work to people
+who are interested in TFX. Use concrete findings, examples and mistakes; avoid
+ending sections with generic lessons or telling readers that a distinction matters.
+Keep accuracy limits beside the relevant finding, in plain language, without
+repeated defensive disclaimers. Preserve existing section anchors when renaming
+headings.
 
 To deliberately refresh viewer data and adapters from the complete research
 checkout, run `node scripts/import-analysis.mjs /path/to/tfx-reverse`.
