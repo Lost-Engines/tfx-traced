@@ -24,3 +24,5 @@ Use “we found” for findings in our investigation. Do not turn that into a cl
 that nobody has previously documented the same fact. Do not describe QSound's
 analytical output as verified hardware emulation, or the March audio transfer
 as an established intentional remaster.
+
+The graphics-engine article has its own [claim map and image provenance](graphics-sources.md), including the TFX/Inferno algorithm comparisons and diagram construction.

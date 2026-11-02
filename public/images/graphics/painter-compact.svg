@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 550" width="320" height="550" role="img" aria-labelledby="title desc"><title id="title">Object paint order</title><desc id="desc">Water draws first with a positive bias, the structure next, smoke last with a negative bias.</desc><rect width="100%" height="100%" fill="#111e29"/><g font-family="system-ui, sans-serif"><text x="20" y="36" fill="#e6eceb" font-size="25">Object paint order</text><text x="20" y="70" fill="#abbcc5" font-size="18">Camera depth + header bias</text>
+<text x="20" y="125" fill="#e6eceb" font-size="22">1  Water</text><text x="223" y="125" fill="#88cdbd" font-size="22">+3,000</text>
+<text x="20" y="178" fill="#e6eceb" font-size="22">2  Structure</text><text x="223" y="178" fill="#88cdbd" font-size="22">0</text>
+<text x="20" y="231" fill="#e6eceb" font-size="22">3  Smoke</text><text x="223" y="231" fill="#88cdbd" font-size="22">−100</text>
+<g transform="translate(-199,280) scale(.55)"><path d="M480,265 L735,164 L925,263 L670,365Z" fill="#3c6780" stroke="#8ca6bc" stroke-width="2"/>
+<path d="M590,229 L590,297 M660,255 L660,324 M818,190 L818,255 M749,166 L749,226" stroke="#9faea6" stroke-width="10"/>
+<path d="M568,210 L749,140 L841,185 L660,259Z" fill="#618174" stroke="#88cdbd" stroke-width="2"/>
+<path d="M618,189 L618,144 L712,108 L762,132 L762,178 L668,214Z" fill="#91a593" stroke="#c1caba" stroke-width="2"/>
+<path d="M618,144 L668,169 L762,132 M668,169 L668,214" stroke="#344d46" fill="none" stroke-width="2"/>
+<circle cx="746" cy="103" r="17" fill="#b4b8a4"/><circle cx="765" cy="76" r="24" fill="#b4b8a4"/><circle cx="799" cy="57" r="30" fill="#b4b8a4"/>
+</g>
+<text x="20" y="531" fill="#abbcc5" font-size="17">Order changes. Vertices stay put.</text></g></svg>

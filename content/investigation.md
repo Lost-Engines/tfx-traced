@@ -111,3 +111,5 @@ All **128 retail mission launches and their first sixteen Arcade frames** match 
 The faithful version preserves some small renderer bugs. In missile-nose view, distant point models keep the normal projection while polygons use a wider one. A two-pixel marker at the right edge can wrap onto the next row. We fixed those separately in [TFX Redux](https://github.com/Lost-Engines/tfx-redux), alongside higher resolutions, configurable FOV, longer views and the live virtual-cockpit instruments.
 
 Both reconstructions are available to play. For the detailed formats, code references and comparisons, see the [full research archive](https://lostengines.com/tfx/).
+
+For a closer look at the drawing itself, read [How TFX draws a world](../graphics/): an illustrated tour of the graphics pipeline, with the changes we found in Inferno.

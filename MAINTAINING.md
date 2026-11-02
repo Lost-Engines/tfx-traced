@@ -51,3 +51,15 @@ switches, palettes, mission briefings, map lights, all four FLAC excerpts,
 mobile layout and the absence of download controls. GPU readback checks also
 cover coplanar map overlays, distant surface separation and light occlusion. It also runs against the
 published site. It is separate from the lightweight build/link checks in CI.
+
+The standalone graphics article lives in `content/graphics-engine.md`, with
+claim and screenshot provenance in `content/graphics-sources.md`. Its CSS and
+four interactive diagrams load only on `/graphics/`. The diagrams work locally,
+without external libraries. Their static SVG fallbacks also work without
+JavaScript and in print; regenerate them with
+`node scripts/make-graphics-diagrams.mjs`.
+
+Only the three selected 320×200 PNG captures are published with this article.
+Original frame indices, DAC dumps, executables and harness recordings stay in
+the research/implementation checkouts. The article does not use Redux graphics
+as examples of the original renderer.
