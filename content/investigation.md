@@ -2,6 +2,8 @@ TFX has a lot going on beyond its three flyable aircraft. Once we could open its
 
 We wanted to understand the game well enough to rebuild it. That meant sorting through releases, decoding its archives and tracing everything from mission rules to the music timer. The work eventually became [TFX C++](https://github.com/Lost-Engines/tfx-cpp). The [map explorer](../maps/) and [model gallery](../models/) here let you explore some of what we found along the way.
 
+For the physics behind the flying, [How TFX flies](../flight/) follows the Military-spec model through its forces, control laws, engines and landings, with interactive equations drawn from the original code.
+
 ## First, find out which TFX we have
 
 We collected floppy installations, three CD variants, patches, magazine packages and cinematic previews. Several promising finds turned out to be copies of something we already had. Some differed only in their installers or data written during installation. One later CD copy really was damaged: its installer reported a checksum failure, which we could explain by comparing it with another pressing.

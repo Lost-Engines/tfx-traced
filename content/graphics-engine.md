@@ -464,6 +464,7 @@ Next time the runway lights slide underneath the cockpit, there is a lot to look
 <div class="engine-reading">
 <h3>Keep exploring</h3>
 <ul>
+<li><a href="../flight/">How TFX flies</a>: lift, controls, engines and landings inside the flight model.</li>
 <li><a href="../models/">Open the model gallery</a> and try the parameters, detail levels and palettes.</li>
 <li><a href="../maps/">Explore the five theatres</a> and their assembled scenery.</li>
 <li><a href="https://lostengines.com/tfx/">Read the full TFX research</a>, or follow the reconstructed routines in <a href="https://github.com/Lost-Engines/tfx-cpp/tree/master/src/render">TFX C++</a> and <a href="https://github.com/Lost-Engines/inferno-cpp/tree/master/src/render">Inferno C++</a>.</li>

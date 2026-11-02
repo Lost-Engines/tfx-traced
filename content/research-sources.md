@@ -26,3 +26,5 @@ analytical output as verified hardware emulation, or the March audio transfer
 as an established intentional remaster.
 
 The graphics-engine article has its own [claim map and image provenance](graphics-sources.md), including the TFX/Inferno algorithm comparisons and diagram construction.
+
+The flight-physics article has a separate [claim map and numerical provenance](flight-sources.md), covering the aircraft presets, original routine comparisons and the interactive equations.

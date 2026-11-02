@@ -63,3 +63,18 @@ Only the three selected 320×200 PNG captures are published with this article.
 Original frame indices, DAC dumps, executables and harness recordings stay in
 the research/implementation checkouts. The article does not use Redux graphics
 as examples of the original renderer.
+
+## Flight physics article
+
+`content/flight-physics.md` is published at `/flight/`. Its claim map is
+`content/flight-sources.md`. Equation examples use `src/flight-math.js` and shared
+SVG drawing in `src/flight-draw.js`; `src/flight.js` supplies the controls.
+The diagrams also work without JavaScript. Regenerate the static versions with
+`node scripts/make-flight-diagrams.mjs` after changing the drawing or equations.
+
+`npm run check` compares the equations with 444 original-code examples in
+`content/flight-native-checks.json`. The fixture and capture script stay outside
+`dist/`. To refresh them locally, use the native-reference Python environment:
+`/path/to/python scripts/capture-flight-checks.py --cpp ../tfx-cpp --game /path/to/TFX.DAT`.
+This requires the C++ reconstruction's built x87 helpers and the September 1994
+TFX 2.05 executable, whose checksum is checked before execution.
