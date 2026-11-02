@@ -18,7 +18,10 @@ September 1994 CD, TFX 2.05:
   copied to this site.
 
 Weapon records are 27 × 48 bytes at DATA `0x809c`, with object 3 at file
-`0xedaa4`. The range conversion is 8 feet = 2.4384 m per world unit. Projectiles
+`0xedaa4`. The comparison table uses 660 world units per statute mile, matching
+the radar, with calculated values rounded to two decimal places. The manual’s
+AGM 109 H table entry is converted from 509 km using 1 mile = 1.609344 km.
+The physical conversion is 8 feet = 2.4384 m per world unit. Projectiles
 use Q8 position, so one stored position subunit is 0.009525 m. Speed examples use
 50 ticks per model second; the hardware clock is 1193182 / 21845 Hz.
 

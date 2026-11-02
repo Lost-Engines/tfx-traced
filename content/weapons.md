@@ -37,25 +37,27 @@ These weapon routines are shared across the flight-model settings. Choosing Mili
 
 The manual gives most powered weapons a maximum speed in Mach and a maximum range. The game has a range value, but no corresponding Mach limit or target speed in the weapon record.
 
-The following table puts the handbook's figures alongside the range operand used by the game. The latter is converted from world units to kilometres. It is a **guided-flight distance budget**, not a promise that the weapon can hit anything inside that radius.
+The following table compares the handbook's ranges with the values used by the game. Both range columns use statute miles, matching the radar. The game figure is a **guided-flight distance budget**, not a promise that the weapon can hit anything inside that radius.
 
 <div class="engine-table" role="region" aria-label="Missile range and speed comparison" tabindex="0">
-<table><thead><tr><th scope="col">Weapon</th><th scope="col">Manual range</th><th scope="col">Game budget</th><th scope="col">Manual speed</th><th scope="col">Boost ticks</th></tr></thead><tbody>
-<tr><th scope="row">AIM 9S / AIM 9L</th><td>9.92 miles</td><td>16.1 km</td><td>Mach 2</td><td>50</td></tr>
-<tr><th scope="row">ASRAAM</th><td>9.3 miles</td><td>15.1 km</td><td>Mach 3</td><td>50</td></tr>
-<tr><th scope="row">AMRAAM</th><td>29.76 miles</td><td>48.2 km</td><td>Mach 4</td><td>120</td></tr>
-<tr><th scope="row">AAAM</th><td>124 miles in the table; 70 in the text</td><td>200.9 km</td><td>Mach 6</td><td>50</td></tr>
-<tr><th scope="row">AA-ARM</th><td>124 miles</td><td>200.9 km</td><td>Mach 5</td><td>120</td></tr>
-<tr><th scope="row">AGM 65D Maverick</th><td>24.8 miles</td><td>40.2 km</td><td>Mach 1.5</td><td>50</td></tr>
-<tr><th scope="row">AGM 109 H</th><td>509 km in the table; 186 miles in the text</td><td>511.4 km</td><td>Mach 0.60</td><td>100</td></tr>
-<tr><th scope="row">AGM 88 HARM</th><td>11.16 miles</td><td>18.1 km</td><td>Mach 2</td><td>120</td></tr>
-<tr><th scope="row">AGM 122A Sidearm</th><td>4.96 miles</td><td>8.0 km</td><td>Mach 3</td><td>100</td></tr>
-<tr><th scope="row">AGM 84 Harpoon</th><td>57.04 miles</td><td>92.4 km</td><td>Mach 0.75</td><td>100</td></tr>
+<table><thead><tr><th scope="col">Weapon</th><th scope="col">Manual range (miles)</th><th scope="col">Game budget (miles)</th><th scope="col">Manual speed</th><th scope="col">Boost ticks</th></tr></thead><tbody>
+<tr><th scope="row">AIM 9S / AIM 9L</th><td>9.92</td><td>9.99</td><td>Mach 2</td><td>50</td></tr>
+<tr><th scope="row">ASRAAM</th><td>9.3</td><td>9.36</td><td>Mach 3</td><td>50</td></tr>
+<tr><th scope="row">AMRAAM</th><td>29.76</td><td>29.96</td><td>Mach 4</td><td>120</td></tr>
+<tr><th scope="row">AAAM</th><td>124 in the table; 70 in the text</td><td>124.85</td><td>Mach 6</td><td>50</td></tr>
+<tr><th scope="row">AA-ARM</th><td>124</td><td>124.85</td><td>Mach 5</td><td>120</td></tr>
+<tr><th scope="row">AGM 65D Maverick</th><td>24.8</td><td>24.97</td><td>Mach 1.5</td><td>50</td></tr>
+<tr><th scope="row">AGM 109 H</th><td>316.28 in the table; 186 in the text</td><td>317.74</td><td>Mach 0.60</td><td>100</td></tr>
+<tr><th scope="row">AGM 88 HARM</th><td>11.16</td><td>11.24</td><td>Mach 2</td><td>120</td></tr>
+<tr><th scope="row">AGM 122A Sidearm</th><td>4.96</td><td>4.99</td><td>Mach 3</td><td>100</td></tr>
+<tr><th scope="row">AGM 84 Harpoon</th><td>57.04</td><td>57.43</td><td>Mach 0.75</td><td>100</td></tr>
 </tbody></table></div>
+
+The manual gives the AGM 109 H’s table entry as 509 km, converted here to 316.28 miles.
 
 The broad range choices agree reasonably well with the manual. The exceptions start when we ask what the numbers actually control.
 
-A guided update subtracts the distance travelled from the remaining budget. A turning missile spends it along its curved path, so a fleeing or manoeuvring target can exhaust the weapon well inside its advertised range. Travel during the preceding fall and boost does not consume this budget. Although the stage record also contains a timer, ordinary guidance does not count it down: remaining range ends the stage. Conversely, the large number stored for an unguided bomb is not a 200 km bombing capability: its ballistic stages do not use the guided-range calculation at all.
+A guided update subtracts the distance travelled from the remaining budget. A turning missile spends it along its curved path, so a fleeing or manoeuvring target can exhaust the weapon well inside its advertised range. Travel during the preceding fall and boost does not consume this budget. Although the stage record also contains a timer, ordinary guidance does not count it down: remaining range ends the stage. Conversely, the large number stored for an unguided bomb is not a 125-mile bombing capability: its ballistic stages do not use the guided-range calculation at all.
 
 Speed is stranger. The boost routine maintains an acceleration accumulator, initially 25:
 
@@ -82,7 +84,7 @@ After boost, ordinary guidance retains that scalar speed. It does not calculate 
 
 The game separates **finding a target**, **acquiring it**, and **steering towards it after launch**. The three stages have different limits.
 
-The aircraft contact list holds 20 entries. Its broad scan accepts contacts within a horizontal square extending just under 50 miles in each map axis. Height does not enter that first test. Thus an air-to-air weapon with a 201 km budget does not get a 201 km acquisition system. A target near a diagonal corner of the scan square can be farther away than one directly ahead.
+The aircraft contact list holds 20 entries. Its broad scan accepts contacts within a horizontal square extending just under 50 miles in each map axis. Height does not enter that first test. Thus an air-to-air weapon with a 125-mile budget does not get a 125-mile acquisition system. A target near a diagonal corner of the scan square can be farther away than one directly ahead.
 
 For an ordinary air-to-air acquisition, the target must lie within about **25.3° of the aircraft's heading and pitch**, tested separately. There is also a minimum separation, normally 30 world units, about 73 metres. Friendly aircraft fail the weapon-lock check; neutral aircraft are allowed through it.
 
@@ -211,7 +213,7 @@ The specialist weapons do have distinct sequences, although some of their advert
 
 **CMB18 / JP233** scatters generic bomblets around the aircraft's current release anchor during its dispenser stage. With the normal projectile substep limit, it emits one child per update. More updates during the 150-tick stage therefore produce more bomblets. The children use the generic `shoot` record, not separate runway charges and persistent delayed-action mines.
 
-**CSW** falls, boosts, then uses a guided stage which ends when it descends to about 640 feet. At that point it begins scattering the same generic bomblet. The release condition is altitude, not arrival over the target. Its range operand is about 201 km, whereas the manual gives the weapon 12.4 miles.
+**CSW** falls, boosts, then uses a guided stage which ends when it descends to about 640 feet. At that point it begins scattering the same generic bomblet. The release condition is altitude, not arrival over the target. Its range operand is 124.85 miles, whereas the manual gives the weapon 12.4 miles.
 
 During CSW's 150-tick dispenser stage, each update emits `elapsed_ticks + 1` children. Over a full stage, four-tick updates request 190 children over 38 calls; ten-tick updates request 165 over 15 calls. The manual's fixed count of 250 independently homing anti-armour bomblets is not what this programme generates. The children do not have their own armour-seeking guidance.
 
