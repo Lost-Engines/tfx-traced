@@ -464,6 +464,7 @@ Next time the runway lights slide underneath the cockpit, there is a lot to look
 <div class="engine-reading">
 <h3>Keep exploring</h3>
 <ul>
+<li><a href="../weapons/">How TFX’s weapons work</a>: missile guidance, bomb trajectories, damage and countermeasures.</li>
 <li><a href="../flight/">How TFX flies</a>: lift, controls, engines and landings inside the flight model.</li>
 <li><a href="../models/">Open the model gallery</a> and try the parameters, detail levels and palettes.</li>
 <li><a href="../maps/">Explore the five theatres</a> and their assembled scenery.</li>

@@ -28,3 +28,6 @@ as an established intentional remaster.
 The graphics-engine article has its own [claim map and image provenance](graphics-sources.md), including the TFX/Inferno algorithm comparisons and diagram construction.
 
 The flight-physics article has a separate [claim map and numerical provenance](flight-sources.md), covering the aircraft presets, original routine comparisons and the interactive equations.
+
+The [weapons article source record](weapons-sources.md) documents its original-code
+measurements, manual comparisons and ten selected original-renderer screenshots.

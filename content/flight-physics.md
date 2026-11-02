@@ -391,6 +391,7 @@ The most rewarding part of tracing this code is finding the connection between a
 <p class="engine-source">Code: <a href="https://github.com/Lost-Engines/tfx-cpp/blob/6ff369f31402aa9b18add9d7ea4e640ceed19444/src/simulation/timing.cpp">frame clock</a>, <a href="https://github.com/Lost-Engines/tfx-cpp/blob/6ff369f31402aa9b18add9d7ea4e640ceed19444/src/flight/aerodynamic_motion.cpp">integration and quantised rotation</a>, <a href="https://github.com/Lost-Engines/tfx-cpp/blob/6ff369f31402aa9b18add9d7ea4e640ceed19444/docs/verification.md">reconstruction comparisons</a>.</p>
 
 <div class="engine-reading"><h3>Keep exploring</h3><ul>
+<li><a href="../weapons/">How TFX’s weapons work</a>: missile guidance, bomb trajectories, damage and countermeasures.</li>
 <li><a href="../graphics/">How TFX draws a world</a>: model programs, integer transforms and the software renderer.</li>
 <li><a href="../models/">Model gallery</a>: inspect the aircraft, gear, control surfaces and effects.</li>
 <li><a href="../maps/">Map explorer</a>: find the runways, carriers and landscapes beneath those wheels.</li>
