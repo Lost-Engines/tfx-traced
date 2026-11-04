@@ -78,3 +78,26 @@ The diagrams also work without JavaScript. Regenerate the static versions with
 `/path/to/python scripts/capture-flight-checks.py --cpp ../tfx-cpp --game /path/to/TFX.DAT`.
 This requires the C++ reconstruction's built x87 helpers and the September 1994
 TFX 2.05 executable, whose checksum is checked before execution.
+
+## Campaign, AI, recording, audio and testing articles
+
+`content/articles.json` supplies the article directory and home-page links. The
+five articles with a `file` entry share the long-form layout and load their
+diagram module only on their own pages. Keep navigation compact by linking the
+article directory, rather than adding every title to the global menu.
+
+`content/deep-dives-sources.md` maps the claims to reference code and reports.
+The native-result fixture and capture script stay out of the publication; the
+build exposes only the small numerical example tables. Their synthetic inputs
+contain no original resource bytes. Existing sound-exhibit excerpts are reused.
+
+`src/deep-dive-draw.js` draws both live and static SVGs. Run
+`node scripts/make-deep-dive-diagrams.mjs` after editing it. The 20 desktop/compact
+illustrations remain readable without JavaScript. `npm run check` checks their
+freshness and compares the example compressor against captured original outputs.
+The scan and image-difference exhibits are labelled illustrations of specific
+mechanisms; they do not claim to simulate a full encounter or flight.
+
+To refresh the mission and compressor examples, follow the capture command in
+the source notes. It reads the original installation and built C++ probes and
+writes only the specified numerical fixture.

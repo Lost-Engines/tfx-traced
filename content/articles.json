@@ -1,0 +1,10 @@
+[
+  {"slug":"graphics","title":"How TFX draws a world","theme":"Graphics","description":"Model programs, integer transforms, painter order, textures and VGA, with a comparison to Inferno."},
+  {"slug":"flight","title":"How TFX flies","theme":"Flight physics","description":"Lift, drag, engines, control laws and landing gear, with the original equations to explore."},
+  {"slug":"weapons","title":"How TFX’s weapons work","theme":"Weapons","description":"Launch, guidance, countermeasures and damage, including some unexpected differences from the handbook."},
+  {"slug":"campaigns","file":"campaigns.md","title":"How TFX runs a pilot’s career","theme":"Campaigns","contents":"From sortie to career","description":"Mission results, promotions, court-martial and saved careers, including a partial-success award the interpreter skips."},
+  {"slug":"ai","file":"ai.md","title":"What the other pilots are doing","theme":"Aircraft AI","contents":"Inside an encounter","description":"Routes, formations, target searches and short manoeuvre programs, with two aircraft groups assigned a ship’s profile."},
+  {"slug":"recording","file":"recording.md","title":"Inside the flight recorder","theme":"Recording and replay","contents":"From flight to replay","description":"How TFX saves a submitted scene, compresses its fields and draws it again for the post-flight news."},
+  {"slug":"audio","file":"audio-engine.md","title":"How TFX makes sound","theme":"Music and audio","contents":"From cue to sound","description":"Scores, sequencer timing, changing flight cues, speech and sound-card drivers, with four intro auditions."},
+  {"slug":"testing","file":"testing.md","title":"Calling the original executable","theme":"Reverse-engineering methods","contents":"Building a comparison","description":"Using the original machine code to check decisions, file bytes, aircraft state, audio events and every indexed pixel."}
+]

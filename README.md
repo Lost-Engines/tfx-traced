@@ -16,5 +16,12 @@ explores the flight model, from lift and control laws to engines and landing gea
 follows the missiles and bombs from release to impact, with original-code measurements
 and comparisons with the handbook.
 
+The [article collection](https://lost-engines.github.io/tfx-traced/articles/)
+also covers [campaigns](https://lost-engines.github.io/tfx-traced/campaigns/),
+[aircraft AI](https://lost-engines.github.io/tfx-traced/ai/),
+[flight recording](https://lost-engines.github.io/tfx-traced/recording/),
+[audio](https://lost-engines.github.io/tfx-traced/audio/) and
+[testing against the original executable](https://lost-engines.github.io/tfx-traced/testing/).
+
 The full [research archive](https://lostengines.com/tfx/) is published separately.
 See [maintaining the site](MAINTAINING.md) and [attribution](RIGHTS.md).

@@ -1,0 +1,23 @@
+import fs from 'node:fs/promises';
+import {pack,scanVisit,clockTimes,comparison} from '../src/deep-dive-draw.js';
+import assert from 'node:assert/strict';
+const root=new URL('../',import.meta.url);
+const data=JSON.parse(await fs.readFile(new URL('content/deep-dive-native-checks.json',root),'utf8'));
+// These are outputs from the original compressor, including its length prefix.
+for(const c of data.packing)assert.deepEqual(pack(c.input,c.fill),c.encoded,c.name);
+assert.equal(data.campaign.length,24);
+assert.equal(data.campaign.find(c=>c.completed===1&&c.kills===5).bonus,0);
+assert.equal(data.campaign.find(c=>c.completed===1&&c.kills===10).bonus,20000);
+assert.deepEqual(scanVisit(8).slots,[48,49,0,1,2,3]);
+assert.equal(new Set(Array.from({length:9},(_,i)=>scanVisit(i).slots).flat()).size,50);
+assert.equal(clockTimes(500).requested,10);
+assert.ok(Math.abs(clockTimes(500).game-500/(1193182/21845))<1e-12);
+assert.equal(comparison('alias').rgbDiff,0);
+assert.equal(comparison('alias').indexDiff,1);
+assert.equal(comparison('palette').indexDiff,0);
+assert.ok(comparison('palette').rgbDiff>0);
+assert.equal(comparison('state').rgbDiff,0);
+assert.equal(comparison('state').stateDiff,true);
+if(!process.argv.includes('--check'))process.argv.push('--check');
+await import('./make-deep-dive-diagrams.mjs');
+console.log('Article examples agree with captured compression and declared search/timing/comparison cases.');
